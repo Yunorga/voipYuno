@@ -26,9 +26,9 @@ main.get('/', function(req, res){ res.sendFile(__dirname + '/client.html'); });
 
 
 
-/*************************/
-/*** INTERESTING STUFF ***/
-/*************************/
+    /*************************/
+    /*** INTERESTING STUFF ***/
+    /*************************/
 var channels = {};
 var sockets = {};
 
