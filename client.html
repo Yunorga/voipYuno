@@ -112,7 +112,8 @@
                     }
                     peer_connection.onaddstream = function(event) {
                         console.log("onAddStream", event);
-                        var remote_media;
+                        var remote_media = document.getElementsByClassName("remote")[Object.keys(peer_media_elements).length];
+                        /*
                         for (var i = 0;i < document.getElementsByClassName("remote").length-1;i++)
                         {
                         if (document.getElementsByClassName("remote")[i].style.display == "none")
@@ -122,6 +123,7 @@
                             i = 10000;
                         }
                         }
+                        
                         if (remote_media == undefined)
                         {
                             var newVideo = document.createElement("video");
@@ -132,6 +134,7 @@
                             newVideo.style.display = "block";
                             document.body.append(newVideo);
                         }
+                        */
                         /*
                         remote_media.attributes("autoplay", "autoplay");
                         if (MUTE_AUDIO_BY_DEFAULT) {
