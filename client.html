@@ -58,7 +58,7 @@
                     /* Tear down all of our peer connections and remove all the
                      * media divs when we disconnect */
                     for (peer_id in peer_media_elements) {
-                        peer_media_elements[peer_id].remove();
+                        peer_media_elements[peer_id].style.display = "none";
                     }
                     for (peer_id in peers) {
                         peers[peer_id].close();
@@ -112,7 +112,24 @@
                     }
                     peer_connection.onaddstream = function(event) {
                         console.log("onAddStream", event);
-                        var remote_media = document.getElementById("remote");//USE_VIDEO ? document.getElementsByTagName("video") : document.getElementsByTagName("audio")//$("<video>") : $("<audio>");
+                        var remote_media;
+                        for (var i = 0;i < document.getElementsByClassName("remote").length-1;i++)
+                        {
+                        if (document.getElementsByClassName("remote")[i].style.display == "none")
+                        {
+                         remote_media = document.getElementsByClassName("remote")[i];//USE_VIDEO ? document.getElementsByTagName("video") : document.getElementsByTagName("audio")//$("<video>") : $("<audio>");
+                         i = 10000;
+                        }
+                        }
+                        if (remote_media == undefined)
+                        {
+                            var newVideo = document.createElement("video");
+                            newVideo.className = "remote";
+                            newVideo.setAttribute("autoplay", "autoplay");
+                            newVideo.setAttribute("muted" , "true");
+                            newVideo.setAttribute("controls","");
+                            document.body.append(newVideo);
+                        }
                         /*
                         remote_media.attributes("autoplay", "autoplay");
                         if (MUTE_AUDIO_BY_DEFAULT) {
@@ -121,6 +138,7 @@
                         remote_media.attributes("controls", "");
                         */
                         peer_media_elements[peer_id] = remote_media;
+                        peer_media_elements[peer_id].style.display = "block";
                         $('body').append(remote_media);
                         attachMediaStream(remote_media, event.stream);
                     }
@@ -290,6 +308,6 @@
         in 'onAddStream', 'setup_local_media', and 'removePeer'/'disconnect'
         -->
         <video id="local"  autoplay="autoplay" muted="true" controls="controls"></video>
-        <video id="remote" autoplay="autoplay" muted="true" controls="controls"></video>
+        <video class="remote" autoplay="autoplay" muted="true" controls="controls"></video>
     </body>
 </html>
