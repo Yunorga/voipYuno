@@ -93,8 +93,8 @@
                     var peer_connection = new RTCPeerConnection(
                         {"iceServers": ICE_SERVERS}//,
                        // {"optional": [{"DtlsSrtpKeyAgreement": true}]} /* this will no longer be needed by chrome
-                                                                        * eventually (supposedly), but is necessary 
-                                                                        //for now to get firefox to talk to chrome 
+                                                                        //* eventually (supposedly), but is necessary 
+                                                                        //*for now to get firefox to talk to chrome*/  
                     );
                     
                     peers[peer_id] = peer_connection;
