@@ -89,14 +89,16 @@
                         console.log("Already connected to peer ", peer_id);
                         return;
                     }
+                    /*
                     var peer_connection = new RTCPeerConnection(
                         {"iceServers": ICE_SERVERS},
                         {"optional": [{"DtlsSrtpKeyAgreement": true}]} /* this will no longer be needed by chrome
                                                                         * eventually (supposedly), but is necessary 
-                                                                        * for now to get firefox to talk to chrome */
+                                                                        //for now to get firefox to talk to chrome 
                     );
+                    
                     peers[peer_id] = peer_connection;
-
+*/
                     peer_connection.onicecandidate = function(event) {
                         if (event.candidate) {
                             signaling_socket.emit('relayICECandidate', {
