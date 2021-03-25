@@ -112,12 +112,14 @@
                     }
                     peer_connection.onaddstream = function(event) {
                         console.log("onAddStream", event);
-                        var remote_media = USE_VIDEO ? document.getElementsByTagName("video") : document.getElementsByTagName("audio")//$("<video>") : $("<audio>");
+                        var remote_media = document.getElementById("remote");//USE_VIDEO ? document.getElementsByTagName("video") : document.getElementsByTagName("audio")//$("<video>") : $("<audio>");
+                        /*
                         remote_media.attributes("autoplay", "autoplay");
                         if (MUTE_AUDIO_BY_DEFAULT) {
                             remote_media.attributes("muted", "true");
                         }
                         remote_media.attributes("controls", "");
+                        */
                         peer_media_elements[peer_id] = remote_media;
                         $('body').append(remote_media);
                         attachMediaStream(remote_media[0], event.stream);
@@ -287,6 +289,7 @@
         the <video> and <audio> tags are all added and removed dynamically
         in 'onAddStream', 'setup_local_media', and 'removePeer'/'disconnect'
         -->
-        <video autoplay="autoplay" muted="true" controls="controls"></video>
+        <video id="local"  autoplay="autoplay" muted="true" controls="controls"></video>
+        <video id="remote" autoplay="autoplay" muted="true" controls="controls"></video>
     </body>
 </html>
