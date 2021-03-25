@@ -122,7 +122,7 @@
                         */
                         peer_media_elements[peer_id] = remote_media;
                         $('body').append(remote_media);
-                        attachMediaStream(remote_media[0], event.stream);
+                        attachMediaStream(remote_media, event.stream);
                     }
 
                     /* Add our local stream */
@@ -272,7 +272,7 @@
                         local_media[0].setAttribute("muted", "true"); /* always mute ourselves by default */
                         local_media[0].setAttribute("controls", "");
                         $('body').append(local_media);
-                        attachMediaStream(local_media[0], stream);
+                        attachMediaStream(document.getElementById("local"), stream);
 
                         if (callback) callback();
                     },
