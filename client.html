@@ -264,9 +264,9 @@
                         console.log("Access granted to audio/video");
                         local_media_stream = stream;
                         var local_media = USE_VIDEO ? document.getElementsByTagName("video") : document.getElementsByTagName("audio")//$("<video>")$("<video>") : $("<audio>");
-                        local_media.setAttribute[0]("autoplay", "autoplay");
-                        local_media.setAttribute[0]("muted", "true"); /* always mute ourselves by default */
-                        local_media.setAttribute[0]("controls", "");
+                        local_media[0].setAttribute("autoplay", "autoplay");
+                        local_media[0].setAttribute("muted", "true"); /* always mute ourselves by default */
+                        local_media[0].setAttribute("controls", "");
                         $('body').append(local_media);
                         attachMediaStream(local_media[0], stream);
 
