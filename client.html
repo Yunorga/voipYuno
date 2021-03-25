@@ -118,7 +118,8 @@
                         if (document.getElementsByClassName("remote")[i].style.display == "none")
                         {
                          remote_media = document.getElementsByClassName("remote")[i];//USE_VIDEO ? document.getElementsByTagName("video") : document.getElementsByTagName("audio")//$("<video>") : $("<audio>");
-                         i = 10000;
+                         remote_media.style.display = "block";
+                            i = 10000;
                         }
                         }
                         if (remote_media == undefined)
@@ -128,6 +129,7 @@
                             newVideo.setAttribute("autoplay", "autoplay");
                             newVideo.setAttribute("muted" , "true");
                             newVideo.setAttribute("controls","");
+                            newVideo.style.display = "block";
                             document.body.append(newVideo);
                         }
                         /*
@@ -308,6 +310,6 @@
         in 'onAddStream', 'setup_local_media', and 'removePeer'/'disconnect'
         -->
         <video id="local"  autoplay="autoplay" muted="true" controls="controls"></video>
-        <video class="remote" autoplay="autoplay" muted="true" controls="controls"></video>
+        <video class="remote" autoplay="autoplay" muted="true" controls="controls" display="none"></video>
     </body>
 </html>
