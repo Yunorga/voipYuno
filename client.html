@@ -22,7 +22,7 @@
         <script>
             var server = true;
             /** CONFIG **/
-            if (server) 
+            if (server)
             var SIGNALING_SERVER = "https://voipthetest.herokuapp.com";
             else
             var SIGNALING_SERVER = "http://localhost/";
@@ -51,6 +51,10 @@
                 signaling_socket = io(SIGNALING_SERVER);
                 signaling_socket = io();
 
+                if (Object.keys(peer_media_elements).length >  0)
+                {
+                    signaling_socket.emit('disconnect');
+                }
                 signaling_socket.on('connect', function() {
                     console.log("Connected to signaling server");
                     setup_local_media(function() {
