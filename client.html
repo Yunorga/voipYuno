@@ -53,6 +53,7 @@
 
                 if (Object.keys(peer_media_elements).length >  0)
                 {
+                    alert("Disconect")
                     signaling_socket.emit('disconnect');
                 }
                 signaling_socket.on('connect', function() {
